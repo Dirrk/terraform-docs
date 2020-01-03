@@ -19,12 +19,10 @@ A Github action for generating terraform documentation (using terraform-docs)
 | tf\_docs\_git\_commit | If true it will add and commit the files | true | false |
 | tf\_docs\_git\_push | If true it will push the committed changes | false | false |
 | tf\_docs\_git\_commit\_message | Commit message | terraform-docs Automated render | false |
-| tf\_docs\_template | When provided will be used as the template if/when the OUTPUT\_FILE does not exist | # Usage
-\<!--- BEGIN\_TF\_DOCS --->
-\<!--- END\_TF\_DOCS --->
- | false |
+| tf\_docs\_template | When provided will be used as the template if/when the OUTPUT\_FILE does not exist | # Usage \<!--- BEGIN\_TF\_DOCS --->\<!--- END\_TF\_DOCS ---> | false |
 
 
 ## Outputs
-| Name | Description | Default | Required |
-|------|-------------|---------|:-----:|
+| Name | Description |
+|------|-------------|
+| num\_changed | Number of files changed |
