@@ -25,3 +25,67 @@ A Github action for generating terraform documentation (using terraform-docs)
 | Name | Description |
 |------|-------------|
 | num\_changed | Number of files changed |
+
+
+## Examples
+
+### Generate terraform docs for a single folder
+```
+name: Generate terraform docs
+on:
+  - pull_request
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.event.pull_request.head.ref }}
+
+    - name: Generate TF Docs
+      uses: Dirrk/terraform-docs-action@v1
+      with:
+        tf_docs_working_dir: examples/tf12_inject
+        tf_docs_output_file: README.md
+        tf_docs_git_push: 'true'
+```
+
+### Generate terraform docs based on atlantis.yaml v3
+```
+name: Generate terraform docs
+on:
+  - pull_request
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.event.pull_request.head.ref }}
+
+    - name: Generate TF docs
+      uses: Dirrk/terraform-docs-action@v1
+      with:
+        tf_docs_atlantis_file: atlantis.yaml
+        tf_docs_git_push: 'true'
+```
+
+### Generate terraform docs for any folder containing .tf under the find_dir
+```
+name: Generate terraform docs
+on:
+  - pull_request
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.event.pull_request.head.ref }}
+
+    - name: Generate TF docs
+      uses: Dirrk/terraform-docs-action@v1
+      with:
+        tf_docs_find_dir: .
+        tf_docs_git_push: 'true'
+```
