@@ -6,6 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
+      with:
+        ref: ${{ github.event.pull_request.head.ref }}
     - name: Should generate USAGE.md for tf11_basic
       uses: ./
       with:
