@@ -49,8 +49,7 @@ jobs:
         tf_docs_output_file: README.md
 
     - name: Push up changes
-      uses: docker://cdssnc/auto-commit-github-action
+      uses: ad-m/github-push-action@master
       with:
-        args: terraform-docs automated commit
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.event.pull_request.head.ref }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
