@@ -5,9 +5,10 @@ jobs:
   docs:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v2
       with:
         ref: ${{ github.event.pull_request.head.ref }}
+
     - name: Should generate USAGE.md for tf11_basic
       uses: ./
       with:
@@ -49,9 +50,11 @@ jobs:
       with:
         tf_docs_find_dir: examples/tf12_inject
         tf_docs_output_file: README.md
+        tf_docs_git_push: 'true'
+        tf_docs_git_commit_message: 'terraform-docs: automated action'
 
-    - name: Push up changes
-      uses: ad-m/github-push-action@master
-      with:
-        branch: ${{ github.event.pull_request.head.ref }}
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+    # - name: Push up changes
+    #   uses: ad-m/github-push-action@master
+    #   with:
+    #     branch: ${{ github.event.pull_request.head.ref }}
+    #     github_token: ${{ secrets.GITHUB_TOKEN }}

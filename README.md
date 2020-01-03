@@ -16,7 +16,6 @@ A Github action for generating terraform documentation (using terraform-docs)
 | tf\_docs\_indention | Indention level of Markdown sections [1, 2, 3, 4, 5] (default 2) | 2 | false |
 | tf\_docs\_args | Additional args to pass | --sort-inputs-by-required | false |
 | tf\_docs\_output\_method | Method should be one of (replace/inject/print) where replace will replace the tf\_docs\_output\_file, inject will inject the content between start and close delims and print will just print the output | inject | false |
-| tf\_docs\_git\_commit | If true it will add and commit the files | true | false |
 | tf\_docs\_git\_push | If true it will push the committed changes | false | false |
 | tf\_docs\_git\_commit\_message | Commit message | terraform-docs Automated render | false |
 | tf\_docs\_template | When provided will be used as the template if/when the OUTPUT\_FILE does not exist | # Usage \<!--- BEGIN\_TF\_DOCS --->\<!--- END\_TF\_DOCS ---> | false |
