@@ -47,8 +47,10 @@ jobs:
       with:
         tf_docs_find_dir: examples/tf12_inject
         tf_docs_output_file: README.md
-        tf_docs_git_commit_message: terraform-docs automated change
-        tf_docs_git_commit: true
-        tf_docs_git_push: true
+
+    - name: Push up changes
+      uses: docker://cdssnc/auto-commit-github-action
+      with:
+        args: terraform-docs automated commit
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
