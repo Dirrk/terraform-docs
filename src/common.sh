@@ -22,7 +22,7 @@ git_commit () {
     git commit -m "${INPUT_TF_DOCS_GIT_COMMIT_MESSAGE}"
 
     if [ "${INPUT_TF_DOCS_GIT_PUSH}" = "true" ]; then
-      git push -u origin "HEAD:${GITHUB_REF}"
+      git push -u origin "HEAD:${GITHUB_HEAD_REF}"
     fi
   fi
 }
