@@ -17,10 +17,6 @@
 
 # Usage
 <!--- BEGIN_TF_DOCS --->
-## Providers
-
-No provider.
-
 ## Inputs
 
 | Name | Description | Type | Default | Required |
