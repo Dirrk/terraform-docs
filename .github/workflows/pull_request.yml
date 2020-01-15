@@ -20,7 +20,7 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@master
-
+        
       - name: fmt
         uses: hashicorp/terraform-github-actions@master
         with:
@@ -34,10 +34,16 @@ jobs:
   build:
     name: 'Build example docs'
     runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
+    steps:  
+    - name: Checkout at ref
+      if: github.event.pull_request.head.repo.full_name == github.repository
+      uses: actions/checkout@v2
       with:
         ref: ${{ github.event.pull_request.head.ref }}
+    
+    - name: Checkout
+      if: github.event.pull_request.head.repo.full_name != github.repository
+      uses: actions/checkout@v2
 
     - name: Should generate USAGE.md for tf11_basic
       uses: ./
@@ -81,13 +87,21 @@ jobs:
       with:
         tf_docs_find_dir: examples/tf12_inject
         tf_docs_output_file: README.md
+
+    - name: Push up changes
+      if: github.event.pull_request.head.repo.full_name == github.repository
+      uses: ./
+      with:
+        tf_docs_working_dir: examples/tf12_basic
+        tf_docs_content_type: json
+        tf_docs_output_method: print
         tf_docs_git_push: 'true'
         tf_docs_git_commit_message: 'terraform-docs: automated action'
 
   release:
     name: 'Release'
     needs: build
-    if: startsWith(github.event.pull_request.head.ref, 'release')
+    if: startsWith(github.event.pull_request.head.ref, 'release') && github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
