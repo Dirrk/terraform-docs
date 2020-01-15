@@ -33,7 +33,7 @@ update_doc () {
   echo "::debug file=common.sh,line=30,col=1 WORKING_DIR=${WORKING_DIR}"
 
   if [ "${INPUT_TF_DOCS_CONTENT_TYPE}" = "json" ]; then
-    MY_DOC=`terraform-docs "${INPUT_TF_DOCS_CONTENT_TYPE}" "${WORKING_DIR}" $TF_ARGS`
+    MY_DOC=`terraform-docs "${INPUT_TF_DOCS_CONTENT_TYPE}" "${WORKING_DIR}" $INPUT_TF_DOCS_ARGS`
 
     if [ -f "${INPUT_TF_DOCS_TEMPLATE_FILE}" ]; then
       echo "${MY_DOC}" > "/tmp/config.json"
