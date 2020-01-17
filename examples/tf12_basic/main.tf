@@ -1,3 +1,14 @@
+provider "aws" {
+  version = "~> 2.20.0"
+
+  region = "us-east-1"
+}
+
+provider "consul" {
+  alias   = "test"
+  version = ">= 2.4.0"
+}
+
 variable "vpc_id" {
   description = "The id of the vpc"
   type        = string

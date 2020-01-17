@@ -36,3 +36,12 @@ output "vpc_id" {
   description = "The Id of the VPC"
   value       = "${var.vpc_id}"
 }
+
+provider "aws" {
+  region = "us-east-1"
+}
+
+provider "consul" {
+  alias   = "ae1"
+  version = ">= 1.0.0"
+}
