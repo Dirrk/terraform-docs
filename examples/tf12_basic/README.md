@@ -17,7 +17,9 @@
 <!--- BEGIN_TF_DOCS --->
 ## Providers
 
-No provider.
+| Name | Version |
+|------|---------|
+| aws | ~> 2.20.0 |
 
 ## Inputs
 
