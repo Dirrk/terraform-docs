@@ -1,6 +1,8 @@
 ### Providers
 
-No provider.
+The following providers are used by this module:
+
+- aws
 
 ### Inputs
 
