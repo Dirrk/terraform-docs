@@ -45,3 +45,8 @@ provider "consul" {
   alias   = "ae1"
   version = ">= 1.0.0"
 }
+
+data "aws_acm_certificate" "test-cert" {
+  domain   = "test.example.com"
+  statuses = ["ISSUED"]
+}

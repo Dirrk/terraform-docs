@@ -9,6 +9,17 @@ provider "consul" {
   version = ">= 2.4.0"
 }
 
+terraform {
+  required_providers {
+    consul = ">= 2.4.0"
+  }
+}
+
+data "aws_acm_certificate" "test-cert" {
+  domain   = "test.example.com"
+  statuses = ["ISSUED"]
+}
+
 variable "vpc_id" {
   description = "The id of the vpc"
   type        = string
