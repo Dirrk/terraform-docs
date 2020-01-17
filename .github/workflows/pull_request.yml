@@ -20,7 +20,7 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@master
-        
+
       - name: fmt
         uses: hashicorp/terraform-github-actions@master
         with:
@@ -34,13 +34,13 @@ jobs:
   build:
     name: 'Build example docs'
     runs-on: ubuntu-latest
-    steps:  
+    steps:
     - name: Checkout at ref
       if: github.event.pull_request.head.repo.full_name == github.repository
       uses: actions/checkout@v2
       with:
         ref: ${{ github.event.pull_request.head.ref }}
-    
+
     - name: Checkout
       if: github.event.pull_request.head.repo.full_name != github.repository
       uses: actions/checkout@v2
@@ -62,7 +62,7 @@ jobs:
         tf_docs_working_dir: examples/tf11_extra_args
         tf_docs_content_type: document
         tf_docs_indention: '3'
-        tf_docs_args: '--with-aggregate-type-defaults --no-required'
+        tf_docs_args: '--no-required'
         tf_docs_output_method: replace
 
     - name: Should inject into README.md
@@ -70,6 +70,7 @@ jobs:
       with:
         tf_docs_working_dir: examples/tf12_basic
         tf_docs_output_file: README.md
+        tf_docs_args: ''
 
     - name: Should generate README.md for tf12_atlantis
       uses: ./

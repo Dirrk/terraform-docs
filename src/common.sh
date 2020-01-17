@@ -71,26 +71,3 @@ update_doc () {
     echo "${MY_DOC}"
   fi
 }
-
-update_meta () {
-  NEW_VERSION="${1}"
-  MAJOR_VERSION=`echo "${NEW_VERSION}" | cut -d. -f1`
-  echo "major_version: ${MAJOR_VERSION}" > /tmp/version.yml
-  echo "version: ${NEW_VERSION}" >> /tmp/version.yml
-  gomplate -d meta=.github/meta.yml -d newmeta=/tmp/version.yml -i '{{ ds "meta" | coll.Merge (ds "newmeta") | data.ToYAML }}' -o /tmp/meta.yml
-  cat /tmp/meta.yml > .github/meta.yml
-  git_add_doc ".github/meta.yml"
-}
-
-update_readme () {
-  # generate README.md with version
-  gomplate -d action=action.yml -d meta=.github/meta.yml -f .github/templates/README.tpl -o README.md
-  git_add_doc "./README.md"
-}
-
-overwrite_docker_tag () {
-  NEW_TAG="${1:-"latest"}"
-  # update the dockerfile to be locked down at this specific version
-  sed -i "s|FROM derekrada/terraform-docs:.*|FROM derekrada/terraform-docs:${NEW_TAG}|" ./Dockerfile
-  git_add_doc "./Dockerfile"
-}
