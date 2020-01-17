@@ -6,7 +6,6 @@ provider "aws" {
 
 provider "consul" {
   alias   = "test"
-  version = ">= 2.4.0"
 }
 
 terraform {
@@ -18,6 +17,14 @@ terraform {
 data "aws_acm_certificate" "test-cert" {
   domain   = "test.example.com"
   statuses = ["ISSUED"]
+}
+
+data "consul_key" "test" {
+  key {
+    name    = "test"
+    path    = "examples/test.json"
+    default = "{}"
+  }
 }
 
 variable "vpc_id" {

@@ -39,6 +39,7 @@ output "vpc_id" {
 
 provider "aws" {
   region = "us-east-1"
+  version = "< 2.2.0"
 }
 
 provider "consul" {
@@ -49,4 +50,12 @@ provider "consul" {
 data "aws_acm_certificate" "test-cert" {
   domain   = "test.example.com"
   statuses = ["ISSUED"]
+}
+
+data "consul_key" "test" {
+  key {
+    name    = "test"
+    path    = "examples/test.json"
+    default = "{}"
+  }
 }
