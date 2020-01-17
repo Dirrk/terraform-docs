@@ -2,7 +2,9 @@
 
 The following providers are used by this module:
 
-- aws
+- aws (< 2.2.0)
+
+- consul (>= 1.0.0)
 
 ### Inputs
 
