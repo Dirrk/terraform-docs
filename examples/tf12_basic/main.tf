@@ -5,7 +5,7 @@ provider "aws" {
 }
 
 provider "consul" {
-  alias   = "test"
+  alias = "test"
 }
 
 terraform {
