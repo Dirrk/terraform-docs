@@ -41,17 +41,19 @@ jobs:
       with:
         tf_docs_atlantis_file: atlantis.yaml
         tf_docs_output_file: README.md
+        tf_docs_args: '--no-providers'
 
     - name: Should generate README.md for tf12_find and its submodules
       uses: ./
       with:
         tf_docs_find_dir: examples/tf12_find
 
-    - name: Should generate README.md for tf12_inject and push up all changes
+    - name: Should generate README.md for tf12_inject
       uses: ./
       with:
         tf_docs_find_dir: examples/tf12_inject
         tf_docs_output_file: README.md
+        tf_docs_args: '--sort-inputs-by-required'
 
     - name: Push up changes
       uses: ./
