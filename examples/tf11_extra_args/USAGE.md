@@ -1,11 +1,3 @@
-### Requirements
-
-The following requirements are needed by this module:
-
-- aws (< 2.2.0)
-
-- consul (>= 1.0.0)
-
 ### Providers
 
 The following providers are used by this module:
