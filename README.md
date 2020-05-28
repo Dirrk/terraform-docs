@@ -3,7 +3,7 @@ A Github action for generating terraform module documentation using terraform-do
 ## Version
 v1.0.8
 
-Using [terraform-docs](https://github.com/segmentio/terraform-docs) v0.8.2, which is supported and tested on terraform version 0.11+ & 0.12+ but may work for others.
+Using [terraform-docs](https://github.com/segmentio/terraform-docs) v0.9.1, which is supported and tested on terraform version 0.11+ & 0.12+ but may work for others.
 
 
 
