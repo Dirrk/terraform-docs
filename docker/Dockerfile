@@ -1,5 +1,5 @@
-FROM golang:1.13-alpine3.10 as builder
-ARG VERSION=v0.10.1
+FROM golang:1.16-alpine3.13 as builder
+ARG VERSION=v0.13.0
 
 # Install dependencies
 RUN set -x \
