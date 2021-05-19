@@ -13,8 +13,8 @@ git_changed () {
 }
 
 git_setup () {
-  git config --global user.name ${GITHUB_ACTOR}
-  git config --global user.email ${GITHUB_ACTOR}@users.noreply.github.com
+  git config --global user.name github-actions[bot]
+  git config --global user.email github-actions[bot]@users.noreply.github.com
   git fetch --depth=1 origin +refs/tags/*:refs/tags/*
 }
 
