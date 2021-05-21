@@ -1,3 +1,7 @@
+# This repository has been moved to https://github.com/terraform-docs/gh-actions
+
+---
+
 # terraform-docs
 A Github action for generating terraform module documentation using terraform-docs and gomplate. In addition to statically defined directory modules, this module can search specific sub folders or parse atlantis.yaml for module identification and doc generation.  This action has the ability to auto commit docs to an open PR or after a push to a specific branch.
 ## Version
