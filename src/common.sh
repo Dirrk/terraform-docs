@@ -9,7 +9,7 @@ git_add_doc () {
 
 git_changed () {
   GIT_FILES_CHANGED=`git status --porcelain | grep -E '([MA]\W).+' | wc -l`
-  echo "::set-output name=num_changed::${GIT_FILES_CHANGED}"
+  echo "{num_changed}={${GIT_FILES_CHANGED}}" >> $GITHUB_OUTPUT
 }
 
 git_setup () {
